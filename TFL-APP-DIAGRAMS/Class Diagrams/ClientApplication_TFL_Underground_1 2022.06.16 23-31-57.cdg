@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="ClientApplication_TFL_Underground_1">
+  <ClassDiagramComponents>
+    <Class name="Consumer_TFL_Underground" package="ClientConsumerServiceRestful_TFL_Underground" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="getStations" returnType="List&lt;Station&gt;" visibility="public" isStatic="true"/>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="aregs"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="TicketGenerator_TFL_Underground" package="ControllersClient_TFL" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="generateTicket" returnType="String" visibility="public" isStatic="true">
+          <Argument type="Ticket" name="ticket"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Gate" package="Model_TFL_Underground" visibility="public" xPosition="620.0" yPosition="20.0">
+      <Fields>
+        <Field name="zone" type="int" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="zone"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="enter" returnType="ValidatorTicket" visibility="public">
+          <Argument type="String" name="xml"/>
+        </Method>
+        <Method name="exit" returnType="boolean" visibility="public">
+          <Argument type="String" name="xml"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Station" package="Model_TFL_Underground" visibility="public" xPosition="1096.0" yPosition="323.0">
+      <Fields>
+        <Field name="stationname" type="String" visibility="private"/>
+        <Field name="stationid" type="int" visibility="private"/>
+        <Field name="gates" type="Gate" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="stationname"/>
+          <Argument type="int" name="stationid"/>
+          <Argument type="int" name="zone"/>
+        </Constructor>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getStationname" returnType="String" visibility="public"/>
+        <Method name="setStationname" returnType="void" visibility="public">
+          <Argument type="String" name="stationname"/>
+        </Method>
+        <Method name="getStationid" returnType="int" visibility="public"/>
+        <Method name="setStationid" returnType="void" visibility="public">
+          <Argument type="int" name="stationid"/>
+        </Method>
+        <Method name="getZone" returnType="int" visibility="public"/>
+        <Method name="setZone" returnType="void" visibility="public">
+          <Argument type="int" name="zone"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Ticket" package="Model_TFL_Underground" visibility="public" xPosition="20.0" yPosition="398.0">
+      <Fields>
+        <Field name="from_station" type="String" visibility="private"/>
+        <Field name="hasEntered" type="boolean" visibility="private"/>
+        <Field name="ExpiredDate" type="Date" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="from_station"/>
+          <Argument type="String" name="to_station"/>
+          <Argument type="String" name="from_zone"/>
+          <Argument type="String" name="to_zone"/>
+          <Argument type="boolean" name="hasEntered"/>
+          <Argument type="boolean" name="hasExited"/>
+          <Argument type="Date" name="ExpiredDate"/>
+        </Constructor>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getFrom_station" returnType="String" visibility="public"/>
+        <Method name="setFrom_station" returnType="void" visibility="public">
+          <Argument type="String" name="from_station"/>
+        </Method>
+        <Method name="getTo_station" returnType="String" visibility="public"/>
+        <Method name="setTo_station" returnType="void" visibility="public">
+          <Argument type="String" name="to_station"/>
+        </Method>
+        <Method name="getFrom_zone" returnType="String" visibility="public"/>
+        <Method name="setFrom_zone" returnType="void" visibility="public">
+          <Argument type="String" name="from_zone"/>
+        </Method>
+        <Method name="getTo_zone" returnType="String" visibility="public"/>
+        <Method name="setTo_zone" returnType="void" visibility="public">
+          <Argument type="String" name="to_zone"/>
+        </Method>
+        <Method name="isHasEntered" returnType="boolean" visibility="public"/>
+        <Method name="setHasEntered" returnType="void" visibility="public">
+          <Argument type="boolean" name="hasEntered"/>
+        </Method>
+        <Method name="isHasExited" returnType="boolean" visibility="public"/>
+        <Method name="setHasExited" returnType="void" visibility="public">
+          <Argument type="boolean" name="hasExited"/>
+        </Method>
+        <Method name="getExpiredDate" returnType="Date" visibility="public"/>
+        <Method name="setExpiredDate" returnType="void" visibility="public">
+          <Argument type="Date" name="ExpiredDate"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ValidatorTicket" package="Model_TFL_Underground" visibility="public" xPosition="936.0" yPosition="20.0">
+      <Fields>
+        <Field name="istheticketValid" type="boolean" visibility="private"/>
+        <Field name="XML" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+        <Constructor visibility="public">
+          <Argument type="boolean" name="istheticketValid"/>
+          <Argument type="String" name="XML"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="isIstheticketValid" returnType="boolean" visibility="public"/>
+        <Method name="setIstheticketValid" returnType="void" visibility="public">
+          <Argument type="boolean" name="istheticketValid"/>
+        </Method>
+        <Method name="getXML" returnType="String" visibility="public"/>
+        <Method name="setXML" returnType="void" visibility="public">
+          <Argument type="String" name="XML"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="gates" source="Model_TFL_Underground.Station" target="Model_TFL_Underground.Gate" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Model_TFL_Underground.Gate" target="Model_TFL_Underground.ValidatorTicket" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="ControllersClient_TFL.TicketGenerator_TFL_Underground" target="Model_TFL_Underground.Ticket" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="ClientConsumerServiceRestful_TFL_Underground.Consumer_TFL_Underground" target="Model_TFL_Underground.Station" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
